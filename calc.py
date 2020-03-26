@@ -21,8 +21,6 @@ def calculate_result(num1, op, num2):
 try:
     (opt, arg) = getopt.getopt(sys.argv[1:], 'n:m:o:', ["number1=", "number2=", "operation="])
 
-    # This prevents the input to have repeated or missing options.
-    # If the input has 3 but still incorrect options the except NameError block will catch it.
     if len(opt) != 3:
         print("Error: Expected 3 options,", len(opt), "received")
         exit()
@@ -42,16 +40,13 @@ try:
 
 
 except getopt.GetoptError as e:
-    # If any option is missing arguments, or any other input problem.
     print("Error: " + str(e))
 
 except NameError:
     print("Missing options")
 
 except ValueError:
-    # If one or both numbers are not integers.
     print("Your numbers must be integers")
 
 except ZeroDivisionError:
-    # If -m or --number2 = 0
     print("You can't divide by zero")
