@@ -14,39 +14,42 @@ def calculate_result(num1, op, num2):
         result = num1 * num2
     else:
         result = num1 / num2
-
     return result
 
 
-try:
-    (opt, arg) = getopt.getopt(sys.argv[1:], 'n:m:o:', ["number1=", "number2=", "operation="])
+def main():
+    try:
+        (opt, arg) = getopt.getopt(sys.argv[1:], 'n:m:o:', ["number1=", "number2=", "operation="])
 
-    if len(opt) != 3:
-        print("Error: Expected 3 options,", len(opt), "received")
-        exit()
+        if len(opt) != 3:
+            print("Error: Expected 3 options,", len(opt), "received")
+            exit()
 
-    for (option, argument) in opt:
-        if option == '-n' or option == '--number1':
-            number1 = int(argument)
-        elif option == '-m' or option == '--number2':
-            number2 = int(argument)
-        elif option == '-o' or option == '--operation':
-            operation = argument
+        for (option, argument) in opt:
+            if option == '-n' or option == '--number1':
+                number1 = int(argument)
+            elif option == '-m' or option == '--number2':
+                number2 = int(argument)
+            elif option == '-o' or option == '--operation':
+                operation = argument
 
-    if operation not in ['+', '-', 'x', '/']:
-        print("Invalid operation")
-    else:
-        print(number1, operation, number2, "=", calculate_result(number1, operation, number2))
+        if operation not in ['+', '-', 'x', '/']:
+            print("Invalid operation")
+        else:
+            print(number1, operation, number2, "=", calculate_result(number1, operation, number2))
+
+    except getopt.GetoptError as e:
+        print("Error: " + str(e))
+
+    except NameError:
+        print("Missing options")
+
+    except ValueError:
+        print("Your numbers must be integers")
+
+    except ZeroDivisionError:
+        print("You can't divide by zero")
 
 
-except getopt.GetoptError as e:
-    print("Error: " + str(e))
-
-except NameError:
-    print("Missing options")
-
-except ValueError:
-    print("Your numbers must be integers")
-
-except ZeroDivisionError:
-    print("You can't divide by zero")
+if __name__ == '__main__':
+    main()
