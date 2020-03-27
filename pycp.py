@@ -32,7 +32,7 @@ def main():
         (opt, arg) = getopt.getopt(sys.argv[1:], 'i:o:', ["input=, output="])
 
         if len(opt) != 2:
-            raise AttributeError("Expected 2 options,", len(opt), "received")
+            raise AttributeError("Expected 2 options, " + str(len(opt)) + " received")
 
         for (option, argument) in opt:
             if option == '-i' or option == '--input':
@@ -45,13 +45,15 @@ def main():
         paste(destiny_file_path, content_to_copy, os.path.basename(source_file_path))
 
     except getopt.GetoptError as e:
-        print("Error : " + str(e))
+        print("Error: " + str(e))
     except NameError:
-        print("Missing options")
+        print("Error: Missing options")
+    except AttributeError as e:
+        print("AttributeError: " + str(e))
     except NotADirectoryError as e:
         print("Error: " + str(e))
     except FileNotFoundError as e:
-        print("Error: " + str(e))
+        print("FileNotFoundError: " + str(e))
 
 
 if __name__ == '__main__':
