@@ -11,18 +11,20 @@ def read_file(path):
             content = file.read()
             return content
     else:
-        raise FileNotFoundError()
+        raise FileNotFoundError("Source file not found")
 
 
-def paste(path, content):
+def paste(path, content, basename=""):
     if not os.path.isdir(path):
+        # If destiny filename is specified
         with open(path, 'w') as file:
             file.write(content)
     elif os.path.exists(path):
-        path = path + "copied_file.txt"
+        # If destiny exists and is a directory, the file is copied with the original name
+        path = path + basename
         paste(path, content)
     else:
-        raise NotADirectoryError
+        raise NotADirectoryError("Destiny directory not found")
 
 
 def main():
@@ -30,8 +32,7 @@ def main():
         (opt, arg) = getopt.getopt(sys.argv[1:], 'i:o:', ["input=, output="])
 
         if len(opt) != 2:
-            print("Error: Expected 2 options,", len(opt), "received")
-            exit()
+            raise AttributeError("Expected 2 options,", len(opt), "received")
 
         for (option, argument) in opt:
             if option == '-i' or option == '--input':
@@ -41,16 +42,16 @@ def main():
 
         content_to_copy = read_file(source_file_path)
 
-        paste(destiny_file_path, content_to_copy)
+        paste(destiny_file_path, content_to_copy, os.path.basename(source_file_path))
 
     except getopt.GetoptError as e:
         print("Error : " + str(e))
     except NameError:
         print("Missing options")
-    except IsADirectoryError:
-        print("You need to specify the file name")
-    except FileNotFoundError:
-        print("File doesn't exist")
+    except NotADirectoryError as e:
+        print("Error: " + str(e))
+    except FileNotFoundError as e:
+        print("Error: " + str(e))
 
 
 if __name__ == '__main__':
