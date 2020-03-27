@@ -54,6 +54,8 @@ def main():
         print("Error: " + str(e))
     except FileNotFoundError as e:
         print("FileNotFoundError: " + str(e))
+    except UnicodeDecodeError:
+        print("Can't read that file")
 
 
 if __name__ == '__main__':
