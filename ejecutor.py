@@ -10,12 +10,12 @@ def get_datetime():
     return datetime.now().strftime("%d/%m/%Y %H:%M")
 
 
-def write_logfile(log_file, command, message, correctly_executed=False):
+def write_logfile(log_file, command, error_message, correctly_executed=False):
     with open(log_file, "a") as file:
         if correctly_executed:
             file.write(get_datetime() + ": comando '" + command + "' ejecutado correctamente.\n")
         else:
-            file.write(get_datetime() + ": " + message)
+            file.write(get_datetime() + ": " + error_message)
 
 
 def write_stdout(output_file, output):
@@ -52,6 +52,10 @@ def main():
         print("Error: " + str(e))
     except NameError:
         print("Error: Missing options")
+    except AttributeError as e:
+        print("Error: " + str(e))
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

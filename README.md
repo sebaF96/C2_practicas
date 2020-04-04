@@ -17,5 +17,11 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 </li>
 
+<li>
+
+[Ejercicio 3 - subprocess.Popen](https://github.com/sebaF96/C2_practicas/blob/master/ejecutor.py)
+
+</li>
+
 
 </ul>
