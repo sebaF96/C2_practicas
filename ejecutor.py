@@ -10,10 +10,10 @@ def get_datetime():
     return datetime.now().strftime("%d/%m/%Y %H:%M")
 
 
-def write_logfile(log_file, command, error_message, correctly_executed=False):
+def write_log(log_file, command, error_message, correctly_executed=False):
     with open(log_file, "a") as file:
         if correctly_executed:
-            file.write(get_datetime() + ": comando '" + command + "' ejecutado correctamente.\n")
+            file.write(get_datetime() + ": command '" + command + "' successfully executed.\n")
         else:
             file.write(get_datetime() + ": " + error_message)
 
@@ -44,9 +44,9 @@ def main():
 
             if proccess.returncode is 0:
                 write_stdout(output_file, proccess_stdout)
-                write_logfile(log_file, command, proccess_stderr, correctly_executed=True)
+                write_log(log_file, command, proccess_stderr, correctly_executed=True)
             else:
-                write_logfile(log_file, command, proccess_stderr)
+                write_log(log_file, command, proccess_stderr)
 
     except getopt.GetoptError as e:
         print("Error: " + str(e))
