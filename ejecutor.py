@@ -13,9 +13,9 @@ def get_datetime():
 def write_log(log_file, command, error_message, correctly_executed=False):
     with open(log_file, "a") as file:
         if correctly_executed:
-            file.write(get_datetime() + ": command '" + command + "' successfully executed.\n")
+            file.write(get_datetime() + " - command '" + command + "' successfully executed.\n")
         else:
-            file.write(get_datetime() + ": " + error_message)
+            file.write(get_datetime() + " - " + error_message)
 
 
 def write_stdout(output_file, output):
