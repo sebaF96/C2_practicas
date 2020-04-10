@@ -35,11 +35,6 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 </li>
 
-<li>
-
-[Ejercicio 6 - fork](https://github.com/sebaF96/C2_practicas/blob/master/fork_6.py)
-
-</li>
 
 
 </ul>
