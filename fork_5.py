@@ -11,6 +11,9 @@ def main():
         raise getopt.GetoptError("Expected one option with its argument")
 
     number_of_children = int(opt[0][1])
+    if number_of_children < 1:
+        raise ValueError
+
     father_id = os.getpid()
 
     for i in range(number_of_children):
@@ -19,7 +22,7 @@ def main():
             break
 
     # If the father doesn't wait, some children will be inherited by
-    # process init, showing an incorrect message (mi padre es 1), so...
+    # process init, showing an "incorrect" message (mi padre es 1), so...
     if os.getpid() == father_id:
         os.wait()
 
@@ -30,4 +33,4 @@ if __name__ == '__main__':
     except getopt.GetoptError as e:
         print(e)
     except ValueError:
-        print("Argument must be an integer")
+        print("Argument must be a positive integer")
