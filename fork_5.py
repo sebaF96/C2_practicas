@@ -7,8 +7,8 @@ import sys
 
 def main():
     (opt, arg) = getopt.getopt(sys.argv[1:], 'n:')
-    if len(opt) > 1:
-        raise getopt.GetoptError("Expected just one option with its argument")
+    if len(opt) != 1:
+        raise getopt.GetoptError("Expected one option with its argument")
 
     number_of_children = int(opt[0][1])
     father_id = os.getpid()
