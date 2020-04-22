@@ -29,7 +29,7 @@ def paste(path, content, basename=""):
 
 def main():
     try:
-        (opt, arg) = getopt.getopt(sys.argv[1:], 'i:o:', ["input=, output="])
+        (opt, arg) = getopt.getopt(sys.argv[1:], 'i:o:', ["input=", "output="])
 
         if len(opt) != 2:
             raise AttributeError("Expected 2 options, " + str(len(opt)) + " received")
