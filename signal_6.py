@@ -9,7 +9,7 @@ def handler(signum, frame):
     if signum == signal.SIGUSR1:
         print("Child process here (%d), signal SIGUSR1 received" % os.getpid())
     if signum == signal.SIGINT:
-        print("Parent received SIGINT, killing child and finishing now...")
+        print("\nParent received SIGINT, killing child and finishing now...")
         os.kill(-os.getpid(), signal.SIGTERM)
         # I'm using the NEGATIVE father's pid to send the same signal to the children process.
         # This way, the parent will "kill -TERM" his child and himself.
