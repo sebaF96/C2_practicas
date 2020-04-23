@@ -35,6 +35,22 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 </li>
 
+<li>
 
+[Ejercicio 6 - signal](https://github.com/sebaF96/C2_practicas/blob/master/signal_6.py)
+
+</li>
+
+<li>
+
+[Ejercicio 7 - signal](https://github.com/sebaF96/C2_practicas/blob/master/signal_7.py)
+
+</li>
+
+<li>
+
+[Ejercicio 8 - signal](https://github.com/sebaF96/C2_practicas/blob/master/signal_8.py)
+
+</li>
 
 </ul>
