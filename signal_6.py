@@ -7,7 +7,7 @@ import time
 
 def handler(signum, frame):
     if signum == signal.SIGUSR1:
-        print("Child process here, signal", signum, "received")
+        print("Child process here (%d), signal SIGUSR1 received" % os.getpid())
     if signum == signal.SIGINT:
         print("Parent received SIGINT, killing child and finishing now...")
         os.kill(-os.getpid(), signal.SIGTERM)
