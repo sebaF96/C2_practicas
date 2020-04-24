@@ -18,7 +18,7 @@ def handler(signum, frame):
 def parent(child_pid):
     for i in range(10):
         os.kill(child_pid, signal.SIGUSR1)
-        time.sleep(5) if i < 9 else time.sleep(1)
+        time.sleep(5) if i < 9 else time.sleep(0.1)
     os.kill(child_pid, signal.SIGTERM)
 
 
