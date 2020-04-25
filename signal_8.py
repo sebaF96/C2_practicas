@@ -18,30 +18,34 @@ def read_option():
     return number_of_children
 
 
+def send_signals(children):
+    for pid in children:
+        os.kill(pid, signal.SIGUSR2)
+    os.wait()
+
+
+def handler(signum, frame):
+    print("Soy el PID", os.getpid(), "recibí la señal", signum, "de mi padre PID", os.getppid())
+
+
 def main():
     number_of_children = read_option()
     father_id = os.getpid()
-    children = []
+    children_pids = []
 
     for i in range(number_of_children):
-        child_pid = os.fork()
-
-        if child_pid == 0:
-            def handler(signum, frame):
-                print("Soy el PID", os.getpid(), "recibí la señal", signum, "de mi padre PID", os.getppid())
-
+        child = os.fork()
+        if child == 0:
             signal.signal(signal.SIGUSR2, handler)
             signal.pause()
             break
 
-        print("Creando proceso:", child_pid)
-        children.append(child_pid)
+        print("Creando proceso:", child)
+        children_pids.append(child)
 
     if os.getpid() == father_id:
         time.sleep(0.1)
-        for child in children:
-            os.kill(child, signal.SIGUSR2)
-        os.wait()
+        send_signals(children_pids)
 
 
 if __name__ == '__main__':
