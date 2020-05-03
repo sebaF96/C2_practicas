@@ -53,4 +53,16 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 </li>
 
+<li>
+
+[Ejercicio 9 - pipe](https://github.com/sebaF96/C2_practicas/blob/master/pipe_9.py)
+
+</li>
+
+<li>
+
+[Ejercicio 10 - pipe](https://github.com/sebaF96/C2_practicas/tree/master/pipe_10)
+
+</li>
+
 </ul>

@@ -4,7 +4,7 @@ import os
 import signal
 
 
-def handler(s, frame):
+def handler(s, f):
     pass
 
 
@@ -15,11 +15,13 @@ def main():
 
     # Parent
     if child_pid != 0:
-        fifo_r = open("/tmp/fifo_10", 'r')
+        fifo_r = open("/tmp/fifo_10")
         message = fifo_r.readline()
+
         pipe_w = os.fdopen(w, 'w')
         pipe_w.write(message)
         pipe_w.close()
+
         os.kill(child_pid, signal.SIGUSR1)
         os.wait()
 
