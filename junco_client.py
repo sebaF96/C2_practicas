@@ -10,7 +10,7 @@ def communicate(connection, message):
     response = connection.recv(1024).decode("ascii")
     print("Response from server:", response)
 
-    return int(response) if response.isnumeric() else 200
+    return int(response)
 
 
 def main():
