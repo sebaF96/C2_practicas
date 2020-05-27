@@ -1,6 +1,12 @@
 import socket
-import sys  # for exit
+import sys
 import getopt
+
+
+def send_message(connection, message):
+    connection.send(message.encode('ascii'))
+    response = connection.recv(1024)
+    print("Response from server:", response.decode("ascii"))
 
 
 def main():
@@ -27,27 +33,20 @@ def main():
     s.connect((host, port))
 
     name = 'hello|' + input('Enter your name: ')
-    s.send(name.encode('ascii'))
-    response = s.recv(1024)
-    print(response.decode("ascii"))
+    send_message(s, name)
 
     email = 'email|' + input('Enter your email: ')
-    s.send(email.encode('ascii'))
-    response = s.recv(1024)
-    print(response.decode("ascii"))
+    send_message(s, email)
 
     key = 'key|' + input('Enter the key: ')
-    s.send(key.encode('ascii'))
-    response = s.recv(1024)
-    print(response.decode("ascii"))
+    send_message(s, key)
 
-    s.send("exit".encode('ascii'))
-    response = s.recv(1024)
-    print(response.decode("ascii"))
+    print("Closing connection")
+    send_message(s, "exit")
 
 
 if __name__ == '__main__':
     try:
         main()
-    except AssertionError:
+    except AssertionError or getopt.GetoptError:
         print("You must enter the port and host value using -h or --host and -p or --port")
