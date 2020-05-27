@@ -1,12 +1,14 @@
+#!/usr/bin/python
+
 import socket
 import sys
 import getopt
 
 
-def send_message(connection, message):
+def communicate(connection, message):
     connection.send(message.encode('ascii'))
-    response = connection.recv(1024)
-    print("Response from server:", response.decode("ascii"))
+    response = connection.recv(1024).decode("ascii")
+    print("Response from server:", response)
 
 
 def main():
@@ -32,21 +34,21 @@ def main():
 
     s.connect((host, port))
 
-    name = 'hello|' + input('Enter your name: ')
-    send_message(s, name)
+    name = 'hello|' + input('Enter your name: ').replace(' ', '_')
+    communicate(s, name)
 
     email = 'email|' + input('Enter your email: ')
-    send_message(s, email)
+    communicate(s, email)
 
     key = 'key|' + input('Enter the key: ')
-    send_message(s, key)
+    communicate(s, key)
 
     print("Closing connection")
-    send_message(s, "exit")
+    communicate(s, "exit")
 
 
 if __name__ == '__main__':
     try:
         main()
     except AssertionError or getopt.GetoptError:
-        print("You must enter the port and host value using -h or --host and -p or --port")
+        print("You must enter the port and host value using [-h] or [--host] and [-p] or [--port]")
