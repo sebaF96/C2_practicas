@@ -41,6 +41,10 @@ def main():
     response = s.recv(1024)
     print(response.decode("ascii"))
 
+    s.send("exit".encode('ascii'))
+    response = s.recv(1024)
+    print(response.decode("ascii"))
+
 
 if __name__ == '__main__':
     try:
