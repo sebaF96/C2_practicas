@@ -10,6 +10,8 @@ def communicate(connection, message):
     response = connection.recv(1024).decode("ascii")
     print("Response from server:", response)
 
+    return int(response) if response.isnumeric() else 200
+
 
 def main():
     host = None
@@ -34,14 +36,21 @@ def main():
 
     s.connect((host, port))
 
-    name = 'hello|' + input('Enter your name: ').replace(' ', '_')
-    communicate(s, name)
+    name_check = False
+    email_check = False
+    key_check = False
 
-    email = 'email|' + input('Enter your email: ')
-    communicate(s, email)
+    while not name_check:
+        name = 'hello|' + input('Enter your name: ').replace(' ', '_')
+        name_check = int(communicate(s, name)) == 200
 
-    key = 'key|' + input('Enter the key: ')
-    communicate(s, key)
+    while not email_check:
+        email = 'email|' + input('Enter your email: ')
+        email_check = int(communicate(s, email)) == 200
+
+    while not key_check:
+        key = 'key|' + input('Enter the key: ')
+        key_check = int(communicate(s, key)) == 200
 
     print("Closing connection")
     communicate(s, "exit")
