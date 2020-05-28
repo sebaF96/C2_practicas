@@ -37,14 +37,14 @@ def main():
         server_socket.bind(('', port))
         server_socket.listen(5)
         clientsocket = server_socket.accept()[0]
-        data = clientsocket.recv(2048)
+        data = clientsocket.recv(2048).decode('ascii')
 
         clientsocket.close()
 
     elif protocol.upper() == 'UDP':
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         server_socket.bind(('', port))
-        data = server_socket.recvfrom(2048)[0]
+        data = server_socket.recvfrom(2048)[0].decode('ascii')
 
         server_socket.close()
 
