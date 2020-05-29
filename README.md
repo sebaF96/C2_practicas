@@ -65,4 +65,22 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 </li>
 
+<li>
+
+[Ejercicio 11 - sockets](https://github.com/sebaF96/C2_practicas/blob/master/cliente_juncotic.py)
+
+</li>
+
+<li>
+
+[Ejercicio 12 - sockets](https://github.com/sebaF96/C2_practicas/tree/master/stdin_sockets)
+
+</li>
+
+<li>
+
+[Ejercicio 13 - sockets](https://github.com/sebaF96/C2_practicas/tree/master/remote_shell)
+
+</li>
+
 </ul>
