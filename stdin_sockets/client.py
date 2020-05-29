@@ -5,8 +5,6 @@ import socket
 import sys
 
 
-CONNECTION_MESSAGE = "Connection established, enter your data to stdin and press CTRL-D when you're done"
-
 
 def read_options():
     address = port = protocol = None
@@ -45,7 +43,7 @@ def main():
     if protocol.upper() == 'TCP':
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((address, port))
-        print(CONNECTION_MESSAGE)
+        print('Connected to', address, 'on port', port)
         data = read_stdin()
 
         s.send(data.encode('ascii'))
@@ -53,11 +51,11 @@ def main():
 
     elif protocol.upper() == 'UDP':
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        print(CONNECTION_MESSAGE)
         data = read_stdin()
 
         s.sendto(data.encode('ascii'), (address, port))
 
+    print('\nData sent to', address)
 
 
 if __name__ == '__main__':
