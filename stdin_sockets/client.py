@@ -44,6 +44,7 @@ def main():
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((address, port))
         print('Connected to', address, 'on port', port)
+        print("Start typing and press CTRL-D when you're done")
         data = read_stdin()
 
         s.send(data.encode('ascii'))
@@ -51,6 +52,7 @@ def main():
 
     elif protocol.upper() == 'UDP':
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        print("Start typing and press CTRL-D when you're done")
         data = read_stdin()
 
         s.sendto(data.encode('ascii'), (address, port))
