@@ -79,7 +79,13 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 <li>
 
-[Ejercicio 13 - sockets](https://github.com/sebaF96/C2_practicas/tree/master/remote_shell)
+[Ejercicio 13 - sockets](https://github.com/sebaF96/C2_practicas/tree/remote_shell/remote_shell)
+
+</li>
+
+<li>
+
+[Ejercicio 14 - sockets-multiprocessing](https://github.com/sebaF96/C2_practicas/tree/master/remote_shell)
 
 </li>
 
