@@ -4,6 +4,13 @@ import getopt
 import socket
 import subprocess as sp
 import sys
+import multiprocessing
+import signal
+
+
+def close_server(s, frame):
+    print('\nClosing connections and server...')
+    sys.exit(0)
 
 
 def read_port():
@@ -17,19 +24,7 @@ def read_port():
     return port
 
 
-def main():
-    local_address = socket.gethostbyname(socket.getfqdn())
-    port = read_port()
-
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('', port))
-    print('Server started at', local_address, 'on port', port)
-    print('Waiting for connection...')
-    server_socket.listen()
-
-    client_socket, address = server_socket.accept()
-    print('Got a connection from', address[0])
-
+def attend_client(client_socket, address):
     while True:
         command = client_socket.recv(2048)
 
@@ -49,7 +44,28 @@ def main():
             else:
                 client_socket.send(process_stderr.encode('ascii'))
 
+    print('Client', address, 'disconnected')
     client_socket.close()
+
+
+def main():
+    signal.signal(signal.SIGINT, close_server)
+
+    local_address = socket.gethostbyname(socket.getfqdn())
+    port = read_port()
+
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('', port))
+    print('Server started at', local_address, 'on port', port)
+    print('Waiting for connections...')
+
+    while True:
+        server_socket.listen(16)
+        client_socket, address = server_socket.accept()
+        print('\nGot a connection from', address)
+
+        new_process = multiprocessing.Process(target=attend_client, args=(client_socket, address))
+        new_process.start()
 
 
 if __name__ == '__main__':
