@@ -85,7 +85,19 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 <li>
 
-[Ejercicio 14 - sockets-multiprocessing](https://github.com/sebaF96/C2_practicas/tree/master/remote_shell)
+[Ejercicio 14 - multiprocessing - sockets](https://github.com/sebaF96/C2_practicas/tree/master/remote_shell)
+
+</li>
+
+<li>
+
+[Ejercicio 15 - multiprocessing - pipe](https://github.com/sebaF96/C2_practicas/blob/master/mp_15.py)
+
+</li>
+
+<li>
+
+[Ejercicio 16 - multiprocessing - queue](https://github.com/sebaF96/C2_practicas/blob/master/mp_16.py)
 
 </li>
 
