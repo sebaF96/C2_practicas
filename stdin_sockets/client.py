@@ -47,7 +47,7 @@ def main():
         print("Start typing and press CTRL-D when you're done")
         data = read_stdin()
 
-        s.send(data.encode('ascii'))
+        s.send(data.encode())
 
 
     elif protocol.upper() == 'UDP':
@@ -55,7 +55,7 @@ def main():
         print("Start typing and press CTRL-D when you're done")
         data = read_stdin()
 
-        s.sendto(data.encode('ascii'), (address, port))
+        s.sendto(data.encode(), (address, port))
 
     print('\nData sent to', address)
 

@@ -9,8 +9,8 @@ RESPONSE_CODES = {200: 'OK', 400: 'The command seems valid but out of place', 40
 
 
 def communicate(connection, message):
-    connection.send(message.encode('ascii'))
-    response_code = int(connection.recv(1024).decode("ascii"))
+    connection.send(message.encode())
+    response_code = int(connection.recv(1024).decode())
     print("Response from server:", response_code, '-', RESPONSE_CODES.get(response_code), '\n')
 
     return int(response_code)

@@ -49,7 +49,7 @@ def main():
         server_socket.close()
 
     with open(file_path, 'w') as file:
-        file.write(data.decode('ascii'))
+        file.write(data.decode())
         print('\nData received from', client_address, 'saved on', file_path)
 
 

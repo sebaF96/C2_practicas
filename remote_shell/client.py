@@ -46,8 +46,8 @@ def main():
 
     while command != 'exit':
         command = str(input('> '))
-        s.send(command.encode('ascii'))
-        answer = s.recv(4096).decode('ascii')
+        s.send(command.encode())
+        answer = s.recv(4096).decode()
         print(answer)
         write_log(command, logfile_path) if logfile_path else None
 

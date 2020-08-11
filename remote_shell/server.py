@@ -28,21 +28,21 @@ def attend_client(client_socket, address):
     while True:
         command = client_socket.recv(2048)
 
-        if command.decode('ascii') == 'exit':
-            client_socket.send('Bye!'.encode('ascii'))
+        if command.decode() == 'exit':
+            client_socket.send('Bye!'.encode())
             break
 
         with sp.Popen([command], shell=True, universal_newlines=True, stdout=sp.PIPE, stderr=sp.PIPE) as process:
             process_stdout, process_stderr = process.communicate()
 
             if process.returncode is 0 and process_stdout:
-                client_socket.send(process_stdout.encode('ascii'))
+                client_socket.send(process_stdout.encode())
 
             elif process.returncode is 0 and not process_stdout:
-                client_socket.send('Ok'.encode('ascii'))
+                client_socket.send('Ok'.encode())
 
             else:
-                client_socket.send(process_stderr.encode('ascii'))
+                client_socket.send(process_stderr.encode())
 
     print('Client', address, 'disconnected')
     client_socket.close()
