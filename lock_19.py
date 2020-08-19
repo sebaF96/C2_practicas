@@ -8,7 +8,6 @@ import os
 from multiprocessing import Lock, Process
 
 
-
 def read_options():
     (opt, arg) = getopt.getopt(sys.argv[1:], 'f:r:n:')
 
@@ -16,7 +15,6 @@ def read_options():
         raise getopt.GetoptError('Expected 3 options [-f] [-r] and [-n]. ' + str(len(opt)) + ' received.')
 
     file_path = iterations = n_processes = None
-
 
     for (option, argument) in opt:
         if option == '-f':
@@ -36,6 +34,7 @@ def write_letters(iterations, letter, filepath, lock):
     with open(filepath, 'a') as file:
         for i in range(iterations):
             file.write(letter)
+            file.flush()
             time.sleep(1)
     lock.release()
 
