@@ -101,4 +101,28 @@ Repositorio de la materia donde subiré mis soluciones a la
 
 </li>
 
+<li>
+
+[Ejercicio 17 - multiprocessing - sockets](https://github.com/sebaF96/C2_practicas/tree/master/echo_17)
+
+</li>
+
+<li>
+
+[Ejercicio 18 - sockets - time protocol](https://github.com/sebaF96/C2_practicas/blob/master/time_client_18.py)
+
+</li>
+
+<li>
+
+[Ejercicio 19 - multiprocessing - lock](https://github.com/sebaF96/C2_practicas/blob/master/lock_19.py)
+
+</li>
+
+<li>
+
+[Ejercicio 20 - multiprocessing - lock](https://github.com/sebaF96/C2_practicas/blob/master/lock_20.py)
+
+</li>
+
 </ul>
