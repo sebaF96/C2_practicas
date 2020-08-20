@@ -4,6 +4,28 @@
 Repositorio de la materia donde subiré mis soluciones a la 
 [guía de ejercicios de laboratorio](https://drive.google.com/file/d/12zM1alDGTa0GhSxO0xyQ_yTZEy-QL9JD/view?usp=sharing) propuesta.
 
+
+```python
+#!/usr/bin/python
+
+import getopt
+import sys
+import subprocess
+import os
+import signal
+import socket
+import multiprocessing
+
+
+def main():
+    print("Repositorio de la materia Computacion", (True + True))
+    
+    
+if __name__ == "__main__":
+    main()
+```
+
+
 <h3>Ejercicios</h3>
 
 <ul>
