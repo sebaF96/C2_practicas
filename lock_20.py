@@ -88,13 +88,12 @@ def attend_client(client_socket, lock, client_address):
 
 
 def main():
-    signal.signal(signal.SIGINT, handler)
-
     port = read_port()
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind(('', port))
     server_address = socket.gethostbyname(socket.getfqdn())
     print('Server started at', server_address, 'on port', port)
+    # Connect with telnet [address] [port]
 
     lock = multiprocessing.Lock()
     while True:
@@ -105,7 +104,6 @@ def main():
         new_process.start()
 
 
-
-
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, handler)
     main()
