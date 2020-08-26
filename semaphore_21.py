@@ -7,6 +7,10 @@ import signal
 import sys
 
 
+def read_options():
+    ...
+
+
 def clean_end(s, f):
     sys.exit(0)
 
