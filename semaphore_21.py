@@ -3,6 +3,12 @@
 import multiprocessing
 import random
 import time
+import signal
+import sys
+
+
+def clean_end(s, f):
+    sys.exit(0)
 
 
 def patient_shooter(patient_times, doctor_times, hospital_slots):
@@ -17,7 +23,7 @@ def patient_arrive(hospital_slots, doctor_times, i):
     print("--> Patient", i, "just arrived.", hospital_slots.get_value(), "free slots")
 
     hospital_slots.acquire()
-    print("<-- Patient", i, "is getting attended.", hospital_slots.get_value(), "free slots.")
+    print("[+] Patient", i, "is getting attended.", hospital_slots.get_value(), "free slots.")
     time.sleep(random.uniform(doctor_times[0], doctor_times[1]))
     hospital_slots.release()
     print("<-- Patient", i, "leaving.", hospital_slots.get_value(), "free slots")
@@ -33,4 +39,5 @@ def main():
 
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, clean_end)
     main()
