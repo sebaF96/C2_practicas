@@ -40,8 +40,6 @@ def talk(bob_socket):
             sys.exit(0)
 
 
-
-
 def main():
     alice_socket, bob_socket = stablish_connection()
 
@@ -50,7 +48,6 @@ def main():
         listen(bob_socket)
         print("~" * 35)
         talk(bob_socket)
-
 
 
 if __name__ == '__main__':
