@@ -66,12 +66,12 @@ if __name__ == "__main__":
 
 * [Ejercicio 18 - sockets - time protocol](https://github.com/sebaF96/C2_practicas/blob/master/time_client_18.py)
 
-* [Ejercicio 19 - multiprocessing - lock](https://github.com/sebaF96/C2_practicas/blob/master/lock_19.py)
+* [Ejercicio 19 - multiprocessing - lock](https://github.com/sebaF96/C2_practicas/blob/lock/lock_19.py)
 
 * [Ejercicio 20 - multiprocessing - lock](https://github.com/sebaF96/C2_practicas/blob/master/lock_20.py)
 
 * [Ejercicio 21 - multiprocessing - semaphore](https://github.com/sebaF96/C2_practicas/blob/master/semaphore_21.py)
 
-* [Ejercicio 22 - sockets](https://github.com/sebaF96/C2_practicas/tree/master/walkie_talkie)
+* [Ejercicio 22 - sockets](https://github.com/sebaF96/C2_practicas/tree/walkie/walkie_talkie)
 
 
