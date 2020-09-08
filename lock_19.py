@@ -5,7 +5,14 @@ import sys
 import time
 import string
 import os
-from multiprocessing import Lock, Process
+import threading
+from datetime import datetime
+
+
+def log_activity(threads_number):
+    date_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    with open('etc_23/lock_19_log.txt', 'a') as file:
+        file.write(f'File lock_19.py ran at {date_time} and generated {threads_number} threads including main\n')
 
 
 def read_options():
@@ -42,18 +49,21 @@ def write_letters(iterations, letter, filepath, lock):
 def main():
     file_path, iterations, n_processes = read_options()
     abecedary = string.ascii_uppercase
-    lock = Lock()
-    processes_list = []
+    lock = threading.Lock()
 
     os.system('rm ' + file_path) if os.path.isfile(file_path) else os.system('touch ' + file_path)
 
     for i in range(n_processes):
-        process = Process(target=write_letters, args=(iterations, abecedary[i], file_path, lock))
-        process.start()
-        processes_list.append(process)
+        th = threading.Thread(target=write_letters, args=(iterations, abecedary[i], file_path, lock))
+        th.start()
 
-    for p in processes_list:
-        p.join()
+    log_activity(len(threading.enumerate()))
+
+    for th in threading.enumerate():
+        # An exception will raise if we try to join the main thread, so we exclude it.
+        if th == threading.main_thread():
+            continue
+        th.join()
     print('Done')
 
 

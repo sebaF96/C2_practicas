@@ -1,0 +1,5 @@
+File lock_19.py ran at 08/09/2020 16:22:44 and generated 9 threads including main
+File lock_19.py ran at 08/09/2020 16:22:59 and generated 3 threads including main
+File lock_19.py ran at 08/09/2020 16:23:31 and generated 20 threads including main
+File lock_19.py ran at 08/09/2020 16:28:50 and generated 11 threads including main
+File lock_19.py ran at 08/09/2020 16:30:29 and generated 11 threads including main
