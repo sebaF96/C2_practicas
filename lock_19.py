@@ -6,19 +6,19 @@ import time
 import string
 import os
 import threading
-from datetime import datetime
 import subprocess as sp
+from datetime import datetime
 
 
 def log_activity(threads_number):
     date_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    with open('etc_23/lock_19_log.txt', 'w') as file:
-        file.write(f'File lock_19.py ran at {date_time} and generated {threads_number} threads including main\n')
-        file.write('ps -eLf output shown below:\n\n')
+    with open('etc_23/lock_19_log.txt', 'w') as logfile:
+        logfile.write(f'File lock_19.py ran at {date_time} and generated {threads_number} threads including main\n')
+        logfile.write('ps -eLf output shown below:\n\n')
 
         with sp.Popen(['ps -eLf | grep lock_19 | grep -v grep'], shell=True, universal_newlines=True, stdout=sp.PIPE) as proccess:
             proccess_stdout = proccess.communicate()[0]
-            file.write(proccess_stdout)
+            logfile.write(proccess_stdout)
 
 
 def read_options():
