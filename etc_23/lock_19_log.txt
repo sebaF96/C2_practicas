@@ -1,5 +1,17 @@
-File lock_19.py ran at 08/09/2020 16:22:44 and generated 9 threads including main
-File lock_19.py ran at 08/09/2020 16:22:59 and generated 3 threads including main
-File lock_19.py ran at 08/09/2020 16:23:31 and generated 20 threads including main
-File lock_19.py ran at 08/09/2020 16:28:50 and generated 11 threads including main
-File lock_19.py ran at 08/09/2020 16:30:29 and generated 11 threads including main
+File lock_19.py ran at 08/09/2020 16:58:14 and generated 14 threads including main
+ps -eLf output shown below:
+
+seb      31070 27143 31070  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31073  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31074  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31075  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31076  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31077  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31078  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31079  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31080  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31081  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31082  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31083  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31084  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
+seb      31070 27143 31085  0   14 16:58 pts/1    00:00:00 python lock_19.py -f /tmp/a.txt -r 1 -n 13
