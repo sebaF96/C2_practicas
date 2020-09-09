@@ -7,10 +7,9 @@ import getopt
 import sys
 import hashlib
 
-
-HASH_ALGORITHMS = {"sha1sum": hashlib.sha1(), "sha224sum": hashlib.sha224(), "sha256sum": hashlib.sha256(),
-                   "sha384sum": hashlib.sha384(), "sha512sum": hashlib.sha512(), "sha3-224sum": hashlib.sha3_224,
-                   "sha3-256sum": hashlib.sha3_256, "sha3-384sum": hashlib.sha3_384, "sha3-512sum": hashlib.sha3_512}
+HASH_ALGORITHMS = {"sha1": hashlib.sha1(), "sha224": hashlib.sha224(), "sha256": hashlib.sha256(),
+                   "sha384": hashlib.sha384(), "sha512": hashlib.sha512(), "sha3-224": hashlib.sha3_224(),
+                   "sha3-256": hashlib.sha3_256(), "sha3-384": hashlib.sha3_384(), "sha3-512": hashlib.sha3_512()}
 
 
 def read_port():
@@ -25,12 +24,14 @@ def read_port():
 
 
 def attend_client(client_socket):
-    client_string = client_socket.recv(1024).decode().strip()
-    hash_algorithm = client_socket.recv(64).decode().strip()
+    hash_algorithm = client_socket.recv(64).decode()
+
     if hash_algorithm not in HASH_ALGORITHMS:
-        client_socket.send('Hash algorithm not recognized'.encode())
+        client_socket.send('404'.encode())
         return
 
+    client_socket.send('200'.encode())
+    client_string = client_socket.recv(1024).decode()
     _hash = HASH_ALGORITHMS[hash_algorithm]
     _hash.update(client_string.encode())
     client_socket.send(_hash.hexdigest().encode())
@@ -50,11 +51,8 @@ def main():
         client_socket, address = server_socket.accept()
         print('\nGot a connection from', address)
 
-        new_process = multiprocessing.Process(target=attend_client, args=(client_socket, ))
+        new_process = multiprocessing.Process(target=attend_client, args=(client_socket,))
         new_process.start()
-
-
-
 
 
 if __name__ == '__main__':
