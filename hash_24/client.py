@@ -3,7 +3,6 @@
 import socket
 import getopt
 import sys
-import time
 
 
 def read_options():
@@ -34,7 +33,7 @@ def main():
     address, port, _string, hash_algorithm = read_options()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((address, port))
-    print('Connected to hash server', address, 'on port', port, "\n")
+    print(f'Connected to hash server {address} on port {port}')
 
     s.send(hash_algorithm.encode())
     response_code = s.recv(1024)
@@ -44,7 +43,6 @@ def main():
 
     s.send(_string.encode())
     hashed_digest = s.recv(1024).decode()
-    print(f'Your string: {_string}\n')
     print(f'{hash_algorithm} value: {hashed_digest}')
 
 
