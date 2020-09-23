@@ -27,6 +27,8 @@ def read_options():
     assert processes is not None and bottom is not None and top
     if bottom > top:
         raise getopt.GetoptError('Bottom number [-m] can not be higher than Top number [-n]')
+    if processes > top - bottom:
+        raise getopt.GetoptError("Can't have more processes than numbers to process")
 
     return processes, bottom, top
 
