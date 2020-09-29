@@ -77,3 +77,5 @@ if __name__ == "__main__":
 * Ejercicio 23 - threads (reescritos [Ejercicio 19](https://github.com/sebaF96/C2_practicas/blob/master/lock_19.py) y [Ejercicio 22](https://github.com/sebaF96/C2_practicas/tree/master/walkie_talkie))
 
 * [Ejercicio 24 - threads - hash - sockets](https://github.com/sebaF96/C2_practicas/tree/master/hash_24)
+
+* [Ejercicio 25 - manual pool](https://github.com/sebaF96/C2_practicas/tree/master/squarer_25.py)
