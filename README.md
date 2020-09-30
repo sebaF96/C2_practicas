@@ -79,3 +79,5 @@ if __name__ == "__main__":
 * [Ejercicio 24 - threads - hash - sockets](https://github.com/sebaF96/C2_practicas/tree/master/hash_24)
 
 * [Ejercicio 25 - manual pool](https://github.com/sebaF96/C2_practicas/tree/master/squarer_25.py)
+
+* [Ejercicio 26 - multiprocessing.Pool](https://github.com/sebaF96/C2_practicas/tree/master/squarer_26.py)
