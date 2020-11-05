@@ -5,6 +5,7 @@ import socket
 import subprocess as sp
 import sys
 import multiprocessing
+import os
 import signal
 
 
@@ -32,13 +33,23 @@ def attend_client(client_socket, address):
             client_socket.send('Bye!'.encode())
             break
 
+        if command.decode().startswith("cd"):
+            path = command.decode().split(" ")[1]
+            try:
+                os.chdir(path)
+                client_socket.send('Ok'.encode())
+            except FileNotFoundError:
+                client_socket.send("No such file or directory".encode())
+
+            continue
+
         with sp.Popen([command], shell=True, universal_newlines=True, stdout=sp.PIPE, stderr=sp.PIPE) as process:
             process_stdout, process_stderr = process.communicate()
 
-            if process.returncode is 0 and process_stdout:
+            if process.returncode == 0 and process_stdout:
                 client_socket.send(process_stdout.encode())
 
-            elif process.returncode is 0 and not process_stdout:
+            elif process.returncode == 0 and not process_stdout:
                 client_socket.send('Ok'.encode())
 
             else:
